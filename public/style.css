@@ -360,8 +360,8 @@ section {
   background: linear-gradient(
     to right,
     #4ef0e3,
-    /* very light cyan (left) */ /* teal */ /* cyan-blue */ #0ea5e9,
-    /* blue */ #0369a1 /* dark blue (right) */
+   #0ea5e9,
+     #0369a1 
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -638,16 +638,21 @@ padding: 5% 15%;
     height: 35px;
     margin-right: 10px;
   }
-  
-/* Mobile View Optimizations */
+  .mobile-scroll{
+    display: none;
+  }
+/*Responsiveness*/
 @media (max-width: 768px) {
   section {
-    height: auto !important; /* Forces sections to grow with their content */
-    min-height: 100vh;       /* Keeps them full-screen if content is short */
-    padding-bottom: 50px;    /* Adds space so the next section isn't cramped */
-    overflow: visible;       /* Ensures browser can see the anchor points */
+    height: auto !important; 
+    /* min-height: 100vh;       */
+    padding: 10px 10px 40px 10px;   
+    overflow: visible;     
+    margin: 1rem;
   }
-  /* 1. Reset Navigation */
+  .container{
+    padding-top: 80px;
+  }
   nav {
     padding: 15px 20px;
     flex-direction: column;
@@ -667,30 +672,29 @@ padding: 5% 15%;
     justify-content: center;
   }
   .social-logos {
-    display: none; /* Hide in nav to save space */
+    display: none; 
   }
 
-  /* 2. Hero Section Adjustments */
-  section {
-    height: auto;
-    padding-top: 40px;
-  }
+
   #hero {
     padding: 20px;
   }
   .hero-info {
-    flex-direction: column-reverse; /* Image moves to top */
+    flex-direction: column-reverse; 
     align-items: center;
   }
   .left-text-h1 {
     font-size: 2.8rem;
     line-height: 1.1;
   }
-  .left-text-h3 {
-    font-size: 1.6rem;
+  .left-text-p {
+    font-size: 1.3rem;
+  }
+  .left-text-desc{
+    font-size: 1rem;
   }
   
-  /* 3. Handle Absolute Positioned Buttons */
+  
   .left-btns {
     display: flex;
     flex-direction: column;
@@ -699,12 +703,12 @@ padding: 5% 15%;
     margin-top: 20px;
   }
   .left-btn-1, .left-btn-2 {
-    position: static; /* Removes the 'left: 150px' overlap */
+    position: static; 
     width: 100%;
     text-align: center;
   }
 
-  /* 4. Hero Visuals (Image & Cube) */
+
   .dev-img {
     height: 220px;
     width: 220px;
@@ -765,49 +769,132 @@ padding: 5% 15%;
   bottom: 190px;
   left: 220px;
 }
+.small-dot{
+  display: none;
+}
 .down-arrow{
   display: none;
 }
 
-  /* 5. About & Skills Cards */
-  .about-head-h1 {
-    font-size: 2.5rem;
-  }
-  .about-elements, .skills-element, .mywork-elements {
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-  }
-  .aboutCard, .skill-card, .mywork-card {
-    width: 100%; /* Full width for readability */
-    height: auto;
-  }
-  .about-h1-desc, .skill-card-head {
-    font-size: 1.8rem;
-  }
+.about-head-p{
+  font-size: 0.75rem;
+}
+.about-head-h1{
+  font-size: 2.7rem;
+  margin-bottom: 1rem;
+}
+.about-elements{
+  padding: 0;
+  flex-wrap: wrap;
+}
+.aboutCard{
+  width: 100%;
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+}
+.about-h1-desc{
+  font-size: 1.5rem;
+}
+.about-p-desc{
+  font-size: 1rem;
+}
+.about-data-head{
+  font-size: 1.5rem;
+}
+.about-data-bottom{
+  font-size: 1rem;
+}
+.about-data-desc{
+  font-size: 1rem;
+}
+.skills-element{
+  margin: 1rem;
+  flex-wrap: wrap;
+}
+.skill-card{
+  width: 100%;
+  margin-top: 2rem;
+}
+.skill-card-head{
+  font-size: 1.5rem
+}
+.skill-card-list-item{
+  display: flex;
+  align-items: center;
+  font-size: 01rem;
 
-  /* 6. Contact Form */
-  .contact-container {
-    grid-template-columns: 1fr; /* Stack form on top of info */
-    padding: 20px;
-  }
-  .info-card h3, .form-card h3 {
-    font-size: 1.5rem;
-  }
-  .form-card{
-    margin-bottom: 250px;
-  }
+}
+.skill-card-list-item img{
+  height: 1.5rem;
+}
+.react-rotate {
+  height: 1.5rem !important;
+}
+.mywork-elements,.about-elements,.skills-element,.contact-container {
+  display: flex;
+  flex-wrap: nowrap;        /* 🔥 CRITICAL */
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+  margin-top: 2rem;
+}
 
-  /* 7. Footer */
-  .row {
-    flex-direction: column;
-    text-align: center;
-    gap: 25px;
-  }
-  .cl {
-    width: 100%;
-  }
-  .down-arrow {
-    margin: 10px auto;
-  }
+.mywork-card,.aboutCard,.skill-card,.contact-card {
+  width: 95%;           /* 🔥 NOT width:100% */
+  flex-shrink: 0;           /* 🔥 CRITICAL */
+}
+.mobile-scroll{
+  display: block;
+  font-size: 1rem;
+  color: #2dd4bf;
+  text-align: center;
+}
+
+.work-card-img{
+  height: 150px;
+}
+.mycard-head h1{
+  font-size: 1.5rem;
+}
+.mywork-link{
+  height: 1.5rem;
+}
+.mywork-content p{
+  font-size: 1rem;
+}
+/* Footer */
+.row {
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+.cl {
+  width: 100%;
+}
+.down-arrow {
+  margin: 20px auto;
+}
+.contact-container{
+  padding-bottom: 100px;
+}
+.info-card h3, .form-card h3{
+  font-size: 1.7rem;
+}
+.contact-card{
+  padding: 0 20px;
+}
+.contact-card>p{
+  font-size: 1rem;
+}
+.info-item>p{
+  font-size: 1rem;
+}
+.info-item>span{
+  font-size: 1rem;
+}
+.contact-card img{
+  height: 1.2rem;
+}
 }
