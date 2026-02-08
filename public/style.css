@@ -616,6 +616,7 @@ padding: 5% 15%;
     border-top: 1px solid rgba(14, 164, 233, 0.4);
     width: 100%;
     bottom: 0;
+    left: 0;
     background-color: #020617;
     padding: 30px;
   }
