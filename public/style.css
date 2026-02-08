@@ -110,8 +110,8 @@ nav {
   transform: scale(1.05);
 }
 section {
-  height: 100vh;
-  margin-bottom: 4rem;
+  height: auto;
+  margin: 4rem;
   padding-top: 80px;
 }
 #hero {
@@ -224,14 +224,13 @@ section {
 }
 .cube-wrapper {
   position: absolute;
-  right: 80px;
-  top: 100px;
+  right: 20px;
+  top: 50px;
   width: 200px;
   height: 200px;
   perspective: 1200px;
   transform: none;
 }
-
 .scene {
   width: 150px;
   height: 150px;
@@ -375,7 +374,7 @@ section {
   padding: 110px;
 }
 .aboutCard {
-  height: 60vh;
+  height: auto;
   background-color: rgba(14, 165, 233, 0.2);
   border-radius: 20px;
   border: 2px solid #4ef0e3;
@@ -428,7 +427,7 @@ section {
   background-color: rgba(14, 165, 233, 0.2);
   border: 2px solid #4ef0e3;
   border-radius: 30px;
-  height: 60vh;
+  height: auto;
   padding: 20px;
 }
 .skill-card-head {
@@ -536,6 +535,7 @@ padding: 5% 15%;
   .contact-card {
     background: transparent;
     /* box-shadow: 0 0 10px #0ea5e9; */
+    margin-bottom: 100px;
     padding: 30px;
     border-radius: 14px;
   }
