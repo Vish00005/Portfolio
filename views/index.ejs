@@ -25,6 +25,7 @@
             <a href="#mywork" class="nav-link">My Work</a>
             <a href="#getintouch" class="nav-link">Get In Touch</a>
         </div>
+        <div class="nav-scroll-progress"></div>
     </nav>
     <section id="hero" style="margin-top: 50px;">
         <div class="container">
@@ -47,11 +48,12 @@
                             </a>
                         </div>
                         <div class="social-logos">
-                            <a href="https://github.com/Vish00005" target="_blank" class="git-logo"><img src="/github.png"
-                                    class="social-logo" alt=""></a>
-                            <a href="https://www.linkedin.com/in/vishal-khimsuriya-06075239b/" target="_blank" class="linked-in"><img
-                                    src="/linkedin.png" class="social-logo" alt=""></a>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vishal.j.khim@gmail.com" target="_blank" class="linked-in"><img src="/gmail.png" class="social-logo" alt=""></a>
+                            <a href="https://github.com/Vish00005" target="_blank" class="git-logo"><img
+                                    src="/github.png" class="social-logo" alt=""></a>
+                            <a href="https://www.linkedin.com/in/vishal-khimsuriya-06075239b/" target="_blank"
+                                class="linked-in"><img src="/linkedin.png" class="social-logo" alt=""></a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vishal.j.khim@gmail.com"
+                                target="_blank" class="linked-in"><img src="/gmail.png" class="social-logo" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -264,7 +266,9 @@
             <footer>
                 <div class="row">
                     <div class="cl">
-                        <a href="#hero"><div class="logo">Vishal</div></a>
+                        <a href="#hero">
+                            <div class="logo">Vishal</div>
+                        </a>
                         <p>🖥️ A Full Stack Developer</p>
                     </div>
                     <div class="cl">
@@ -272,10 +276,12 @@
                     </div>
                     <div class="cl">
                         <div class="cl-img">
-                            <a href="https://github.com/Vish00005" target="_blank"> <img src="/githuboutline.png" alt=""></a>
+                            <a href="https://github.com/Vish00005" target="_blank"> <img src="/githuboutline.png"
+                                    alt=""></a>
                             <a href="https://www.linkedin.com/in/vishal-khimsuriya-06075239b/" target="_blank">
                                 <img src="/linkedinoutline.png" alt=""></a>
-                            <a href="https://www.instagram.com/vis.hxlll?igsh=NDliOTQ4OXh6MXVo" target="_blank"><img src="/instagramoutline.png" alt=""></a>
+                            <a href="https://www.instagram.com/vis.hxlll?igsh=NDliOTQ4OXh6MXVo" target="_blank"><img
+                                    src="/instagramoutline.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -284,7 +290,13 @@
 
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Smooth scroll implementation (keep existing)
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener("click", e => {
                 e.preventDefault();
@@ -297,6 +309,160 @@
                     block: "start"
                 });
             });
+        });
+
+        // --- GSAP Animations ---
+
+        // Navbar Scroll Progress Animation
+        gsap.to(".nav-scroll-progress", {
+            scaleX: 1,
+            ease: "none",
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.3
+            }
+        });
+
+        // ScrollSpy Logic: Highlight nav links on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        sections.forEach((section) => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top 150px", // Trigger when section is near the top
+                end: "bottom 150px",
+                onEnter: () => setActive(section.id),
+                onEnterBack: () => setActive(section.id),
+                onLeave: () => {
+                    // Optional: clear if leaving everything, but usually better to let the next one take over
+                }
+            });
+        });
+
+        function setActive(id) {
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
+
+        // Navbar Animation
+        gsap.from("nav", {
+            y: -100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Hero Section Animations
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        heroTl.from(".left-text-p", { opacity: 0, x: -50, duration: 0.8 }, "+=1.2")
+            .from(".left-text-h1", { opacity: 0, x: -50, duration: 0.8 }, "-=0.6")
+            .from(".left-text-desc", { opacity: 0, x: -50, duration: 0.8 }, "-=0.6")
+            .from(".left-btns", { opacity: 0, y: 30, duration: 0.8 }, "-=0.6")
+            .from(".social-logos a", {
+                opacity: 0,
+                y: 20,
+                duration: 0.5,
+                stagger: 0.1
+            }, "-=0.4")
+            .from(".right", {
+                opacity: 0,
+                scale: 0.8,
+                duration: 1.2,
+                ease: "elastic.out(1, 0.5)"
+            }, "-=1");
+
+        // About Section Animations
+        gsap.from(".about-head-p, .about-head-h1", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.2
+        });
+
+        gsap.from(".aboutCard", {
+            scrollTrigger: {
+                trigger: ".about-elements",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
+
+        // Skills Section Animations
+        gsap.from(".skill-card", {
+            scrollTrigger: {
+                trigger: "#skills",
+                start: "top 75%",
+            },
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            stagger: 0.2
+        });
+
+        gsap.from(".skill-card-list-item", {
+            scrollTrigger: {
+                trigger: ".skills-element",
+                start: "top 70%",
+            },
+            opacity: 0,
+            x: -20,
+            duration: 0.4,
+            stagger: 0.05,
+            delay: 0.4
+        });
+
+        // My Work Section Animations - Trigger each card individually
+        gsap.utils.toArray(".mywork-card").forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 60,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Get In Touch Animations
+        gsap.from(".contact-card", {
+            scrollTrigger: {
+                trigger: "#getintouch",
+                start: "top 75%",
+            },
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.8,
+            stagger: 0.3
+        });
+
+        // Footer Animation
+        gsap.from("footer", {
+            scrollTrigger: {
+                trigger: "footer",
+                start: "top bottom",
+            },
+            opacity: 0,
+            y: 20,
+            duration: 1
         });
     </script>
 </body>
