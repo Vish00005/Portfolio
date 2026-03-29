@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  cursor: none !important;
   /* scroll-behavior: smooth; */
 }
 html {
@@ -918,4 +919,17 @@ footer {
   .contact-card img {
     height: 1.2rem;
   }
+}
+
+.cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #4ef0e3;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  box-shadow: 0 0 15px rgba(78, 240, 226, 0.8);
 }
