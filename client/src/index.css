@@ -498,12 +498,28 @@ section {
 }
 .mywork-elements {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 5rem;
+  overflow-x: auto;
+  gap: 50px;
+  padding-bottom: 20px;
 }
+
+.mywork-elements::-webkit-scrollbar {
+  height: 8px;
+}
+.mywork-elements::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+  border-radius: 10px;
+}
+.mywork-elements::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .mywork-card {
   width: 30%;
+  flex-shrink: 0;
   background: transparent;
   border-radius: 12px;
   overflow: hidden;
