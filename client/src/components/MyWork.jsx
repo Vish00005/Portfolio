@@ -243,6 +243,58 @@ const MyWork = () => {
               </p>
             </div>
           </div>
+          <div className="mywork-card">
+            <img
+              src="https://res.cloudinary.com/ddglanrrg/image/upload/v1776086272/Screenshot_2026-04-13_at_6.47.00_PM_ttn1vb.png"
+              alt="Traveller"
+              className="work-card-img"
+            />
+            <div className="mywork-content">
+              <div className="mycard-head">
+                <h1>☕️ POS Cafe</h1>
+                <div className="mycard-links">
+                  <a
+                    href="https://github.com/Vish00005/POS-Cafe.git"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="mywork-link"
+                      src="/github.png"
+                      alt="GitHub"
+                      height="36px"
+                    />
+                  </a>
+                  <a
+                    href="https://pos-cafe-mocha.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="mywork-link"
+                      src="/link2.png"
+                      alt="Live"
+                      height="30px"
+                    />
+                  </a>
+                </div>
+              </div>
+              <p>
+                POS Cafe is a modern Point of Sale (POS) application designed
+                specifically for cafes and restaurants. It streamlines the
+                entire billing and order management process, making it faster,
+                more accurate, and easier to manage for cafe staff.
+              </p>
+              <p>
+                The application features a user-friendly interface for taking
+                orders, calculating totals, and managing transactions. It also
+                includes an admin dashboard for managing menu items, prices, and
+                viewing sales reports. This project demonstrates my ability to
+                build practical, real-world applications that solve everyday
+                business needs.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
